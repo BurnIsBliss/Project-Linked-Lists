@@ -2,12 +2,14 @@ import { LinkedList } from "./linkedListFile.js";
 
 const list = new LinkedList();
 
+console.log(list.toString(), list.tail);
 list.append("dog");
 list.append("cat");
-list.append("mice");
+list.prepend("mice");
+console.log(list.toString(), list.tail);
 list.append("parrot");
-list.append("hamster");
-// list.append("snake");
-// list.append("turtle");
-
-console.log(list.toString());
+list.prepend("hamster");
+console.log(list.toString(), list.tail);
+list.append("snake");
+list.prepend("turtle");
+console.log(list.toString(), list.tail);

@@ -26,21 +26,56 @@ class LinkedList {
 	prepend(value) {
 		const newNode = new Node();
 		newNode.value = value;
-		newNode.nextNode = this.head.nextNode;
+		newNode.nextNode = this.head;
 		this.head = newNode;
 	}
 
 	toString() {
-		if (this.head === null) return "-> null";
+		if (this.head === null) return "( )-> null";
 		let finalString = "";
 		let tempNode = this.head;
 		while (tempNode.nextNode != null) {
-			finalString += `${tempNode.value} -> `;
+			finalString += `( ${tempNode.value} ) -> `;
 			tempNode = tempNode.nextNode;
 		}
-		finalString += `${tempNode.value} -> null`;
+		finalString += `( ${tempNode.value} ) -> null`;
 		return finalString;
 	}
+
+	get size() {
+		let count = 0;
+		let tempNode = this.head;
+		while (tempNode) {
+			count += 1;
+			tempNode = tempNode.nextNode;
+		}
+		return count;
+	}
+
+	// head() modified to listHead()
+	get listHead() {
+		if (this.head === null) return null;
+		else return this.head.value;
+	}
+
+	get tail() {
+		if (this.head === null) return null;
+		else {
+			let tempNode = this.head;
+			while (tempNode.nextNode) {
+				tempNode = tempNode.nextNode;
+			}
+			return tempNode.value;
+		}
+	}
+
+	// at(index) {}
+
+	// pop() {}
+
+	// contains(value) {}
+
+	// find(value) {}
 }
 
 export { LinkedList };
