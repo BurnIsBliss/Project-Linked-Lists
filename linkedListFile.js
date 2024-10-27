@@ -98,9 +98,28 @@ class LinkedList {
 		}
 	}
 
-	// contains(value) {}
+	contains(value) {
+		let temp = this.head;
+		while (temp) {
+			if (temp.value === value) return true;
+			else if (temp.nextNode) temp = temp.nextNode;
+			else break;
+		}
+		return false;
+	}
 
-	// find(value) {}
+	find(value) {
+		let temp = this.head;
+		let index = 0;
+		while (temp) {
+			if (temp.value === value) return `Element found at index, ${index}`;
+			else if (temp.nextNode) {
+				temp = temp.nextNode;
+				index += 1;
+			} else break;
+		}
+		return `Element having ${value} not found!!!`;
+	}
 
 	// insertAt(value, index) {}
 
