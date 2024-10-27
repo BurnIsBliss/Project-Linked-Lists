@@ -9,7 +9,7 @@ class LinkedList {
 	constructor() {
 		this.head = null;
 	}
-
+	// Objects/arrays are passed by value in JavaScript
 	append(value) {
 		if (!this.head) {
 			this.head = new Node();
@@ -31,7 +31,7 @@ class LinkedList {
 	}
 
 	toString() {
-		if (this.head === null) return "( )-> null";
+		if (this.head === null) return "( ) -> null";
 		let finalString = "";
 		let tempNode = this.head;
 		while (tempNode.nextNode != null) {
@@ -54,6 +54,7 @@ class LinkedList {
 
 	// head() modified to listHead()
 	get listHead() {
+		console.log(this.head);
 		if (this.head === null) return null;
 		else return this.head.value;
 	}
@@ -69,13 +70,41 @@ class LinkedList {
 		}
 	}
 
-	// at(index) {}
+	at(index) {
+		let listIndex = 0;
+		let temp = this.head;
+		while (temp) {
+			if (listIndex === index) {
+				return `Element at index ${index} is ${temp.value}`;
+			} else {
+				temp = temp.nextNode;
+				listIndex += 1;
+			}
+		}
+		return `Element not found @ ${index}!!!`;
+	}
 
-	// pop() {}
+	pop() {
+		if (!this.head) return `No elements to pop!!!`;
+		else if (this.head && !this.head.nextNode) this.head = null;
+		else {
+			let temp = this.head;
+			while (temp) {
+				if (temp.nextNode && temp.nextNode.nextNode)
+					temp = temp.nextNode;
+				else break;
+			}
+			temp.nextNode = null;
+		}
+	}
 
 	// contains(value) {}
 
 	// find(value) {}
+
+	// insertAt(value, index) {}
+
+	// removeAt (index) {}
 }
 
 export { LinkedList };
